@@ -1,14 +1,19 @@
 #記帳程式專案
-
-#讀取檔案
+#確認檔案是否存在
+import os # operating system
 products = []
-with open('products.csv', 'r', encoding='utf-8') as f:
-	for line in f:
-		if '商品,價格' in line:
-			continue
-		name, price = line.strip().split(',')
-		products.append([name, price])
-print(products)
+if os.path.isfile('products.csv'):
+	print('Yes')
+#讀取檔案
+	with open('products.csv', 'r', encoding='utf-8') as f:
+		for line in f:
+			if '商品,價格' in line:
+				continue
+			name, price = line.strip().split(',')
+			products.append([name, price])
+	print(products)	
+else:
+	print('No')
 
 #輸入商品名稱價格
 while True :
